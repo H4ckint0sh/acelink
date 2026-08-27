@@ -29,15 +29,17 @@ Ace Link is an unsigned app because Apple does not allow p2p related application
 If you just want to run the AceStream engine, you can do so without Ace Link:
 
 ```sh
-docker run --platform=linux/amd64 --rm -p 6878:6878 blaiseio/acelink
+docker run --platform=linux/amd64 --rm -p 6878:6878 ghcr.io/h4ckint0sh/acelink
 # now open http://<network ip>:6878/ace/getstream?id=<acestream id>
 # or http://<network ip>:6878/ace/getstream?infohash=<magnet uri> in a player
 ```
 
-If you want to use a custom acestream.conf: 
+If you want to use a custom acestream.conf:
 ```
-docker run --platform=linux/amd64 --rm -p 6878:6878 -v "$(pwd)/acestream.conf:/opt/acestream/acestream.conf" blaiseio/acelink
+docker run --platform=linux/amd64 --rm -p 6878:6878 -v "$(pwd)/acestream.conf:/opt/acestream/acestream.conf" ghcr.io/h4ckint0sh/acelink
 ```
+
+This fork publishes its own image to [`ghcr.io/h4ckint0sh/acelink`](https://github.com/h4ckint0sh/acelink/pkgs/container/acelink) and runs it under amd64 emulation on Apple Silicon. An arm64-native build ([`jopsis/aceserve`](https://hub.docker.com/r/jopsis/aceserve)) was tried, but its newer AceStream engine requires device attestation that is currently blocked (Cloudflare 403) for this unofficial build, so streams never resolve.
 
 ### View Ace Link logs
 

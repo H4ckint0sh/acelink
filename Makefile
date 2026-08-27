@@ -6,7 +6,7 @@ DOCKER_DEFAULT_PLATFORM ?= linux/amd64
 
 docker:
 	# Create docker image
-	docker build . --tag blaiseio/acelink:$(VERSION) --progress=plain
+	docker build . --platform=linux/amd64 --tag ghcr.io/h4ckint0sh/acelink:latest --progress=plain
 
 build:
 	# Create a build

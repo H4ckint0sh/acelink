@@ -20,6 +20,7 @@ class AceStreamEngine: Service {
             "run",
             "--rm",
             "--detach",
+            "--platform=linux/amd64",
             "--publish=\(AppConstants.Docker.enginePort):\(AppConstants.Docker.enginePort)",
             "--publish=\(AppConstants.Docker.proxyPort):\(AppConstants.Docker.proxyPort)",
             "--name=\(AppConstants.Docker.containerName)",
@@ -30,12 +31,11 @@ class AceStreamEngine: Service {
             "--bind-all",
             "--live-buffer-time=15",
             "--live-cache-type=memory",
-            "-–vod-buffer=15",
+            "--vod-buffer=15",
             "--vod-cache-type=memory"
         )
         if process.standardOutContents.isEmpty {
             os_log("Cannot get engine ID...")
-            callback(nil)
             return
         }
         containerID = process.standardOutContents
